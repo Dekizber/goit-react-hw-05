@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 
-function MovieList({ movies }) {
+const MovieList = ({ movies }) => {
   const location = useLocation();
   console.log(movies);
 
@@ -8,13 +8,13 @@ function MovieList({ movies }) {
     <ul>
       {movies.map((movie) => (
         <li key={movie.id}>
-          <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-            {movie.title}
+          <Link to={`/movies/${movie.id}`} state={{ location }}>
+            {movie.title} ({movie.release_date.slice(0, 4)})
           </Link>
         </li>
       ))}
     </ul>
   );
-}
+};
 
 export default MovieList;

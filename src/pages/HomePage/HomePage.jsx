@@ -15,11 +15,12 @@ function HomePage() {
     };
     fetchData();
   }, []);
-  console.log(movies);
 
   return (
     <div>
-      <h1>Popular Movies</h1>
+      <h1 className="text-center text-4xl font-medium text-amber-600 mb-3">
+        Trending today
+      </h1>
       <MovieList movies={movies} />
     </div>
   );
