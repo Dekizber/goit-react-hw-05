@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
-
+import s from "./App.module.css";
 import { PacmanLoader } from "react-spinners";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
@@ -21,7 +21,7 @@ function App() {
       <Navigation />
       <Suspense
         fallback={
-          <div>
+          <div className={s.iconLoader}>
             <PacmanLoader color="#ffdd00" />
           </div>
         }

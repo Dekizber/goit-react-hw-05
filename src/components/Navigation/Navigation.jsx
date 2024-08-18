@@ -1,17 +1,18 @@
 import { NavLink } from "react-router-dom";
+import s from "./Navigation.module.css";
 
 function Navigation() {
+  const addActive = ({ isActive }) => (isActive ? s.active : s.link);
+
   return (
-    <div className="flex pt-2 pb-2 justify-center  text-lg shadow-orange-400 ">
-      <ul className="flex justify-between gap-4">
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/movies">Movies</NavLink>
-        </li>
-      </ul>
-    </div>
+    <nav className={s.navBox}>
+      <NavLink className={addActive} to="/">
+        Home
+      </NavLink>
+      <NavLink className={addActive} to="/movies">
+        Movies
+      </NavLink>
+    </nav>
   );
 }
 

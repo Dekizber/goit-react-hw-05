@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import MovieList from "../../components/MovieList/MovieList";
 import { searchMovies } from "../../services/movieAPI";
 import { useSearchParams } from "react-router-dom";
+import s from "./MoviesPage.module.css";
 
 function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const query = searchParams.get("query") ?? "";
-  console.log(movies);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -15,7 +15,6 @@ function MoviesPage() {
       try {
         const response = await searchMovies(query);
         setMovies(response);
-        console.log(response);
       } catch (error) {
         throw new Error(error.message);
       }
@@ -38,15 +37,18 @@ function MoviesPage() {
   };
 
   return (
-    <div>
+    <div className={s.boxSearchPage}>
       <form onSubmit={handleSubmit}>
         <input
+          className={s.inputSearch}
           type="text"
           name="query"
           defaultValue={query}
           placeholder="Search..."
         />
-        <button type="submit">Search</button>
+        <button className={s.btnSearch} type="submit">
+          Search
+        </button>
       </form>
 
       <MovieList movies={movies} />

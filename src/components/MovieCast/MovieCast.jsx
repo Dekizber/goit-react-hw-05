@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { movieCast } from "../../services/movieAPI";
 import { useParams } from "react-router-dom";
 import { PacmanLoader } from "react-spinners";
+import s from "./MovieCast.module.css";
 
 function MovieCast() {
   const { movieId } = useParams();
@@ -23,25 +24,24 @@ function MovieCast() {
     };
     fetchMovieCast();
   }, [movieId]);
-  console.log(actors);
 
   return (
     <>
       {isLoading ? (
-        <div>
+        <div className={s.iconLoader}>
           <PacmanLoader color="#ffdd00" />
         </div>
       ) : (
-        <ul>
+        <ul className={s.listCast}>
           {actors.map((actor) => {
             return (
-              <li key={actor.id}>
+              <li className={s.itemCast} key={actor.id}>
                 <img
                   src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
                   alt={actor.name}
                 />
                 <p>{actor.name}</p>
-                <p>Character: {actor.character}</p>
+                <p className={s.character}>Character: {actor.character}</p>
                 <p></p>
               </li>
             );

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PacmanLoader } from "react-spinners";
 import { movieReviews } from "../../services/movieAPI";
+import s from "./MovieReviews.module.css";
 
 function MovieReviews() {
   const { movieId } = useParams();
@@ -22,21 +23,20 @@ function MovieReviews() {
     };
     fetchMovieReviews();
   }, [movieId]);
-  console.log(reviews);
 
   {
     isLoading && (
-      <div>
+      <div className={s.iconLoader}>
         <PacmanLoader color="#ffdd00" />
       </div>
     );
   }
 
   return (
-    <ul>
+    <ul className={s.reviewsList}>
       {reviews.length > 0 ? (
         reviews.map((review) => (
-          <li key={review.id}>
+          <li className={s.reviewsItem} key={review.id}>
             <h3>{review.author}</h3>
             <p>{review.content}</p>
           </li>
