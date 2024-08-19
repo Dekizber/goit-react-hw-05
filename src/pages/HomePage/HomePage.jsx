@@ -35,23 +35,6 @@ function HomePage() {
   }
   {
     isError && (
-      <p>
-        Sorry for the temporary inconvenience.
-        <br />
-        please reload the page or try again
-      </p>
-    );
-  }
-
-  {
-    isLoading && (
-      <div className={s.icon}>
-        <PacmanLoader color="#ffdd00" />
-      </div>
-    );
-  }
-  {
-    isError && (
       <p className={s.errorMessage}>
         Sorry for the temporary inconvenience!
         <br />
