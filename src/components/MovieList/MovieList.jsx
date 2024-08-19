@@ -11,7 +11,7 @@ const MovieList = ({ movies }) => {
           <Link
             className={s.itemLink}
             to={`/movies/${movie.id}`}
-            state={{ location }}
+            state={location}
           >
             {movie.title} ({movie.release_date.slice(0, 4)})
           </Link>

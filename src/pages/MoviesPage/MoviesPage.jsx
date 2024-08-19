@@ -16,7 +16,7 @@ function MoviesPage() {
         const response = await searchMovies(query);
         setMovies(response);
       } catch (error) {
-        throw new Error(error.message);
+        console.log(error.message);
       }
     };
 

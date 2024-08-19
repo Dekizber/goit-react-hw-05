@@ -13,7 +13,8 @@ function MovieDetailsPage() {
     ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
     : "Poster is not found!";
 
-  const prevLocation = useRef(location.state?.from || "/");
+  const prevLocation = useRef(location.state ?? "/movies");
+  console.log(location);
 
   useEffect(() => {
     const fetchMovDetails = async () => {
@@ -21,8 +22,8 @@ function MovieDetailsPage() {
         setIsLoading(true);
         const response = await movieDetails(movieId);
         setMovie(response);
-      } catch (err) {
-        throw new Error(err);
+      } catch (error) {
+        console.log(error.message);
       } finally {
         setIsLoading(false);
       }

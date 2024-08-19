@@ -18,7 +18,7 @@ function HomePage() {
         setMovies(data);
       } catch (error) {
         setError(true);
-        throw new Error(error.message);
+        console.log(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -43,11 +43,30 @@ function HomePage() {
     );
   }
 
+  {
+    isLoading && (
+      <div className={s.icon}>
+        <PacmanLoader color="#ffdd00" />
+      </div>
+    );
+  }
+  {
+    isError && (
+      <p className={s.errorMessage}>
+        Sorry for the temporary inconvenience!
+        <br />
+        Please reload the page or try again!
+      </p>
+    );
+  }
+
   return (
-    <div className={s.boxHomePage}>
-      <h1 className={s.mainTitle}>Trending today</h1>
-      <MovieList movies={movies} />
-    </div>
+    <>
+      <div className={s.boxHomePage}>
+        <h1 className={s.mainTitle}>Trending today</h1>
+        <MovieList movies={movies} />
+      </div>
+    </>
   );
 }
 

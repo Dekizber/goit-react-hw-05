@@ -4,8 +4,20 @@
   align-items: center;
 }
 
+.errorMessage {
+  text-align: center;
+  margin-bottom: 14px;
+  color: rgb(255, 0, 0);
+  font-size: 28px;
+}
+
 .mainTitle {
   text-align: center;
   margin-bottom: 14px;
   color: rgb(255, 238, 0);
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
 }
